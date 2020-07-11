@@ -166,10 +166,10 @@ const Account = (props) => {
   }
 
   return(
-    <div className = "height100vh flex flexJustifyContentCenter backgroundColorEggWhite">
+    <div className = "height100vh flex flexJustifyContentCenter backgroundColorGradiantGreen">
       <div className = "contentDiv height100vh">
         <div className = "accountCard">
-          <h2 className = "paddingLeft5percent">Username</h2>
+          <h2 className = "paddingLeft5percent colorWhite">Username</h2>
           <hr className = "margin0auto"></hr>
           <form className = "textAlignCenter" onSubmit = {handleUsername}>
             {
@@ -205,7 +205,7 @@ const Account = (props) => {
               null
             }
             <div className = "marginTopBottom50px">
-              <input className = "inputStyle colorBlack" type="text" placeholder={username} required="required" name = "username" />
+              <input className = "inputStyle colorWhite" type="text" placeholder={username} required="required" name = "username" />
             </div>
             <div>
               <Button className = "width80percent marginBottom50px loginPageButtonColor colorWhite" animated>
@@ -218,7 +218,7 @@ const Account = (props) => {
           </form>
         </div>
         <div className = "accountCard">
-          <h2 className = "paddingLeft5percent">Change Password</h2>
+          <h2 className = "paddingLeft5percent colorWhite">Change Password</h2>
           <hr className = "margin0auto"></hr>
           <form className = "textAlignCenter" onSubmit = {handlePassword}>
             {
@@ -254,13 +254,13 @@ const Account = (props) => {
               null
             }
             <div className = "marginTopBottom50px">
-              <input className = "inputStyle colorBlack" type="password" placeholder="Current Password" required="required" name = "currentPassword" />
+              <input className = "inputStyle colorWhite" type="password" placeholder="Current Password" required="required" name = "currentPassword" />
             </div>
             <div className = "marginTopBottom50px">
-              <input className = "inputStyle colorBlack" type="password" placeholder="New Password" required="required" name = "newPassword" />
+              <input className = "inputStyle colorWhite" type="password" placeholder="New Password" required="required" name = "newPassword" />
             </div>
             <div className = "marginTopBottom50px">
-              <input className = "inputStyle colorBlack" type="password" placeholder="Re-Enter New Password" required="required" name = "reNewPassword" />
+              <input className = "inputStyle colorWhite" type="password" placeholder="Re-Enter New Password" required="required" name = "reNewPassword" />
             </div>
             <div>
               <Button className = "width80percent marginBottom50px loginPageButtonColor colorWhite" animated>
@@ -273,7 +273,7 @@ const Account = (props) => {
           </form>
         </div>
         <div className = "accountCard">
-          <h2 className = "paddingLeft5percent">Delete Account</h2>
+          <h2 className = "paddingLeft5percent colorWhite">Delete Account</h2>
           <hr className = "margin0auto"></hr>
           <form className = "textAlignCenter" onSubmit = {handleDeletion}>
             {
@@ -293,7 +293,7 @@ const Account = (props) => {
               null
             }
             <div className = "marginTopBottom50px">
-              <input className = "inputStyle colorBlack" type="password" placeholder="Password" required="required" name = "password" />
+              <input className = "inputStyle colorWhite" type="password" placeholder="Password" required="required" name = "password" />
             </div>
             <div>
               <Button className = "width80percent marginBottom50px loginPageButtonColor colorWhite" animated>

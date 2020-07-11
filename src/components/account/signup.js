@@ -1,9 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Button, Icon } from 'semantic-ui-react'
 import history from '../../history'
 
 
 const Signup = (props) => {
+
+  const [errors, setErrors] = useState([])
 
   const handleSignup = (e) => {
 
@@ -28,9 +30,13 @@ const Signup = (props) => {
     .then(res => res.json())
     .then(res => {
       if(res.message === 'Internal Server Error'){
+        setErrors([
+            'Ensure Username is between 4-20 Characters.',
+            'Ensure Username does not have Special Characters.'
+          ])
       }
       else if(res.message === 'Username Exists'){
-
+        setErrors(['Username Taken.'])
       }
       else{
         fetch('http://localhost:5000/api/user/login',{
@@ -46,10 +52,10 @@ const Signup = (props) => {
           .then(res => res.json())
           .then(res => {
             if(res.message === 'Auth Successful'){
-              history.push('/account')
+              history.push('/user')
             }
             else{
-
+              setErrors(['Auth Failed.'])
             }
           })
         }
@@ -63,6 +69,22 @@ const Signup = (props) => {
       <div className = "width400px textAlignCenter">
       <h1 className = "marginBottom100px colorWhite">Signup</h1>
         <form onSubmit = {handleSignup}>
+          {
+            errors.length !== 0
+            ?
+              <div className = "paddingTopBottom20px">
+                <div className = "errorBox textAlignCenter">
+                  <h3>Errors</h3>
+                    <ul className = "popUpUL">
+                      {errors.map((err, index) => {
+                        return <li key = {index} className = "errorText">{err}</li>
+                      })}
+                    </ul>
+                </div>
+              </div>
+            :
+            null
+          }
           <div className = "marginTopBottom50px">
             <input className = "inputStyle colorWhite" type="text" placeholder="Username" required="required" name = "username" />
           </div>

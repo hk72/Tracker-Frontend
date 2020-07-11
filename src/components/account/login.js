@@ -26,8 +26,7 @@ const Login = (props) => {
       .then(res => res.json())
       .then(res => {
         if(res.message === 'Auth Successful'){
-          history.push('/account')
-
+          history.push('/user')
         }
         else{
           setErrors(['Username or Password Incorrect.'])
@@ -43,6 +42,22 @@ const Login = (props) => {
       <div className = "width400px textAlignCenter">
       <h1 className = "marginBottom100px colorWhite">Login</h1>
         <form onSubmit = {handleLogin}>
+          {
+            errors.length !== 0
+            ?
+              <div className = "paddingTopBottom20px">
+                <div className = "errorBox textAlignCenter">
+                  <h3>Errors</h3>
+                    <ul className = "popUpUL">
+                      {errors.map((err, index) => {
+                        return <li key = {index} className = "errorText">{err}</li>
+                      })}
+                    </ul>
+                </div>
+              </div>
+            :
+            null
+          }
           <div className = "marginTopBottom50px">
             <input className = "inputStyle colorWhite" type="text" placeholder="Username" required="required" name = "username" />
           </div>
