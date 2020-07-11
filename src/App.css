@@ -1,38 +1,234 @@
-.App {
+body{
+  min-width: 0px;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+h1{
+  font-family: 'Roboto Mono', monospace;
+  margin: 0;
+  padding: 0;
+}
+
+h2{
+  font-family: 'Roboto Mono', monospace;
+  margin: 0;
+  padding: 0;
+}
+
+h3{
+  font-family: 'Roboto Mono', monospace;
+  margin: 0;
+  padding: 0;
+}
+
+h4{
+  font-family: 'Roboto Mono', monospace;
+  margin: 0;
+  padding: 0;
+}
+
+h5{
+  font-family: 'Roboto Mono', monospace;
+  margin: 0;
+  padding: 0;
+}
+
+h6{
+  font-family: 'Roboto Mono', monospace;
+}
+
+p{
+  font-family: 'Roboto Mono', monospace;
+  margin: 0;
+  padding: 0;
+}
+
+input{
+  font-family: 'Roboto Mono', monospace;
+  margin: 0;
+  padding: 0;
+}
+
+hr{
+  width: 95%;
+}
+
+.flex{
+  display: flex;
+}
+
+.flexDirectionRow{
+  flex-direction: row;
+}
+
+.flexDirectionColumn{
+  flex-direction: column;
+}
+
+.flexJustifyContentStart{
+  justify-content: start;
+}
+
+.flexJustifyContentEnd{
+  justify-content: end;
+}
+
+.flexJustifyContentCenter{
+  justify-content: center;
+}
+
+.flexJustifyContentSpaceEvenly{
+  justify-content: space-evenly;
+}
+
+.flexAlignItemsCenter{
+  align-items: center;
+}
+
+.height100vh{
+  min-height: 100vh;
+}
+
+.textAlignCenter{
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.pointer:hover{
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.marginTopBottom100px{
+  margin: 100px 0!important;
+}
+.marginTopBottom50px{
+  margin: 50px 0!important;
+}
+.marginBottom100px{
+  margin-bottom: 100px!important;
+}
+.marginBottom50px{
+  margin-bottom: 50px!important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.paddingTopBottom20px{
+  margin: 20px 0;
 }
 
-.App-link {
-  color: #61dafb;
+.slowerTransition{
+  transition: right 1s ease 0s!important;
+}
+.width80percent{
+  width: 80%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.inputStyle{
+  width: 80%;
+  border: none;
+  border-bottom: 1px solid black;
+  background: transparent;
+  outline: none;
+  height: 30px;
+  font-size: 16px;
+  opacity: 1;
+}
+
+.displayInline{
+  display: inline;
+}
+
+.width400px{
+  max-width: 400px;
+  min-width: 200px;
+  width: 400px;
+}
+.backgroundColorGradiantGreen{
+  background-color: #27383b;
+  background-image: linear-gradient(to right, #27383b , #62898b);
+}
+
+.backgroundColorEggWhite{
+  background-color: #ebece7;
+}
+
+.loginPageButtonColor{
+  background: #a7b8b9!important;
+}
+
+.colorWhite{
+  color: white!important;
+}
+
+.colorWhite::placeholder{
+  color: white!important;
+}
+
+.colorBlack{
+  color: black!important;
+}
+
+.colorBlack::placeholder{
+  color: black!important;
+}
+
+.contentDiv{
+  max-width: 1000px;
+  width: 1000px;
+}
+
+.margin0auto{
+  margin: 0 auto;
+}
+
+.paddingLeft5percent{
+  padding-left: 5%;
+}
+
+.errorBox{
+  margin: 0 auto;
+  width: 80%;
+  border-style: solid;
+  border-width: medium;
+  border-radius: 5px;
+  border-color: #FF7272;
+  background-color: #FFCBCB;
+}
+
+.errorBox h3{
+  color: #CA0909;
+  padding: 10px 0;
+  font-size: 25px
+}
+
+.popUpUL{
+  padding: 25px 30px;
+}
+
+.successBox{
+  margin: 0 auto;
+  width: 80%;
+  border-style: solid;
+  border-width: medium;
+  border-radius: 5px;
+  border-color: #72ff89;
+  background-color: #cbffce;
+}
+
+.successBox h3{
+  color: #09ca30;
+  padding: 10px 0;
+  font-size: 25px
+}
+
+.errorText{
+  text-align: left;
+  color: #CA0909;
+}
+
+.successText{
+  text-align: left;
+  color: #09ca30;
 }
