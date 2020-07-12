@@ -72,6 +72,9 @@ hr{
 .flexJustifyContentStart{
   justify-content: start;
 }
+.flexJustifySpaceBetween{
+  justify-content: space-between;
+}
 
 .flexJustifyContentEnd{
   justify-content: end;
@@ -87,6 +90,10 @@ hr{
 
 .flexAlignItemsCenter{
   align-items: center;
+}
+
+.flexAlignContentSpaceAround{
+  align-content: space-around;
 }
 
 .height100vh{
@@ -119,10 +126,13 @@ hr{
 }
 
 .slowerTransition{
-  transition: right 1s ease 0s!important;
+  transition: right 10s ease 0s!important;
+}
+.slowerTransition2{
+  transition: opacity 1s ease,transform 1s ease,-webkit-transform 1s ease !important;
 }
 .width80percent{
-  width: 80%;
+  width: 80%!important;
 }
 
 .inputStyle{
@@ -156,6 +166,7 @@ hr{
 
 .loginPageButtonColor{
   background: #a7b8b9!important;
+  min-width: 290px;
 }
 
 .colorWhite{
@@ -177,6 +188,7 @@ hr{
 .contentDiv{
   max-width: 1000px;
   width: 1000px;
+  min-width: 290px;
 }
 
 .margin0auto{
@@ -278,6 +290,21 @@ hr{
   margin-top: 10px;
 }
 
+.cardImg{
+  max-width: 290px;
+  min-width: 290px;
+}
+
+.cardImg:hover{
+  cursor: pointer;
+}
+
+.cardImg img{
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+}
+
 .logoNav:hover{
   cursor: pointer;
 }
@@ -315,6 +342,15 @@ hr{
   background-color: #27383b;
   background-image: linear-gradient(to right, #27383b , #62898b);
 }
+
+.marginSides10px{
+  margin: 0 14.8px;
+}
+
+.margin0{
+  margin: 0 0!important;
+}
+
 
 @media (max-width: 800px) {
   .hiddenUL{

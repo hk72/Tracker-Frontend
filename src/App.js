@@ -7,6 +7,7 @@ import Navbar from './components/navbar/navbar'
 import Account from './components/account/account'
 import Login from './components/account/login'
 import Signup from './components/account/signup'
+import Dashboard from './components/dashboard/dashboard'
 
 import './App.css';
 
@@ -39,6 +40,7 @@ const App = (props) => {
         <Route path ='/user'>
           <Navbar/>
           <Route exact path = '/user' component = {Account}/>
+          <Route exact path = '/user/dashboard' component = {Dashboard}/>
         </Route>
       </Router>
     </div>

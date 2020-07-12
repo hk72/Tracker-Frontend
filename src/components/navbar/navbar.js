@@ -74,7 +74,7 @@ const Navbar = (props) => {
     <div className = "navbarSeperation">
       <nav id = 'navbar'>
         <div className = 'logoNav'>
-          <img src = 'logo192.png' />
+          <img src = '/logo192.png' alt = 'logo' />
         </div>
         <Icon className = 'menuBar' onClick = { () => bringOutMenuBar()} name='bars' />
         <ul id = 'hUL' className = 'hiddenUL ul'>
@@ -82,12 +82,21 @@ const Navbar = (props) => {
               props.isLoggedIn
               ?
                 <li  onClick = { () => bringOutMenuBar()} className = 'hiddenLI pointer'>
-                  <p onClick = { () => {history.push('/dashboard')}}>Dashboard</p>
+                  <p onClick = { () => {history.push('/user/dashboard')}}>Dashboard</p>
                 </li>
               :
                 null
             }
-          <li  onClick = { () => bringOutMenuBar()} className = 'hiddenLI pointer'>
+            {
+              props.isLoggedIn
+              ?
+                <li  onClick = { () => bringOutMenuBar()} className = 'hiddenLI pointer'>
+                  <p onClick = { () => {history.push('/user')}}>Profile</p>
+                </li>
+              :
+                null
+            }
+          <li  onClick = { () => bringOutMenuBar()} className = ' hiddenLI pointer'>
             {
               props.isLoggedIn
               ?
@@ -102,7 +111,16 @@ const Navbar = (props) => {
               props.isLoggedIn
               ?
                 <li className = 'link pointer'>
-                  <p onClick = { () => {history.push('/dashboard')}}>Dashboard</p>
+                  <p onClick = { () => {history.push('/user/dashboard')}}>Dashboard</p>
+                </li>
+              :
+                null
+            }
+            {
+              props.isLoggedIn
+              ?
+                <li className = 'link pointer'>
+                  <p onClick = { () => {history.push('/user')}}>Profile</p>
                 </li>
               :
                 null

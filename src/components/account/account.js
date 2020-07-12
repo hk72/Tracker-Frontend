@@ -167,7 +167,7 @@ const Account = (props) => {
 
   return(
     <div className = "height100vh flex flexJustifyContentCenter backgroundColorGradiantGreen">
-      <div className = "contentDiv height100vh">
+      <div className = "contentDiv">
         <div className = "accountCard">
           <h2 className = "paddingLeft5percent colorWhite">Change Username</h2>
           <hr className = "margin0auto"></hr>
@@ -208,11 +208,9 @@ const Account = (props) => {
               <input className = "inputStyle colorWhite" type="text" placeholder={username} required="required" name = "username" />
             </div>
             <div>
-              <Button className = "width80percent marginBottom50px loginPageButtonColor colorWhite" animated>
-                <Button.Content className = "slowerTransition" visible>Update</Button.Content>
-                <Button.Content className = "slowerTransition" hidden>
-                  <Icon name='user' />
-                </Button.Content>
+              <Button className = "width80percent marginBottom50px loginPageButtonColor colorWhite" animated='fade'>
+                <Button.Content visible>Update</Button.Content>
+                <Button.Content hidden><Icon name='user' /></Button.Content>
               </Button>
             </div>
           </form>
@@ -263,11 +261,9 @@ const Account = (props) => {
               <input className = "inputStyle colorWhite" type="password" placeholder="Re-Enter New Password" required="required" name = "reNewPassword" />
             </div>
             <div>
-              <Button className = "width80percent marginBottom50px loginPageButtonColor colorWhite" animated>
-                <Button.Content className = "slowerTransition" visible>Update</Button.Content>
-                <Button.Content className = "slowerTransition" hidden>
-                  <Icon name='user' />
-                </Button.Content>
+              <Button className = "width80percent marginBottom50px loginPageButtonColor colorWhite" animated='fade'>
+                <Button.Content visible>Update</Button.Content>
+                <Button.Content hidden><Icon name='user' /></Button.Content>
               </Button>
             </div>
           </form>
@@ -296,11 +292,9 @@ const Account = (props) => {
               <input className = "inputStyle colorWhite" type="password" placeholder="Password" required="required" name = "password" />
             </div>
             <div>
-              <Button className = "width80percent marginBottom50px loginPageButtonColor colorWhite" animated>
-                <Button.Content className = "slowerTransition" visible>Delete Account</Button.Content>
-                <Button.Content className = "slowerTransition" hidden>
-                  <Icon name='trash alternate' />
-                </Button.Content>
+              <Button className = "width80percent marginBottom50px loginPageButtonColor colorWhite" animated='fade'>
+                <Button.Content visible>Delete</Button.Content>
+                <Button.Content hidden><Icon name='trash alternate' /></Button.Content>
               </Button>
             </div>
           </form>
