@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
 import { Icon } from 'semantic-ui-react'
+import history from '../../history'
+import { connect } from 'react-redux'
 
 const Navbar = (props) => {
 
@@ -49,6 +51,25 @@ const Navbar = (props) => {
     }
 
   }
+
+  const handleLogout = () => {
+    fetch('http://localhost:5000/api/user/logout', {
+      method: 'POST',
+      credentials: 'include'
+    })
+    .then(res => res.json())
+    .then(res => {
+      if(res.message === "Log Out Successful"){
+        history.push('/')
+        props.setLoggedIn('false')
+      }
+    })
+    .catch(err => {
+      alert('An Error Has Occured. Please Try Again.')
+    })
+  }
+
+
   return(
     <div className = "navbarSeperation">
       <nav id = 'navbar'>
@@ -57,20 +78,58 @@ const Navbar = (props) => {
         </div>
         <Icon className = 'menuBar' onClick = { () => bringOutMenuBar()} name='bars' />
         <ul id = 'hUL' className = 'hiddenUL ul'>
-          <li  onClick = { () => bringOutMenuBar()} className = 'hiddenLI pointer'><p>Projects</p></li>
-          <li  onClick = { () => bringOutMenuBar()} className = 'hiddenLI pointer'><p>About</p></li>
-          <li  onClick = { () => bringOutMenuBar()} className = 'hiddenLI pointer'><p>Education</p></li>
-          <li  onClick = { () => bringOutMenuBar()} className = 'hiddenLI pointer'><p>Skills</p></li>
+            {
+              props.isLoggedIn
+              ?
+                <li  onClick = { () => bringOutMenuBar()} className = 'hiddenLI pointer'>
+                  <p onClick = { () => {history.push('/dashboard')}}>Dashboard</p>
+                </li>
+              :
+                null
+            }
+          <li  onClick = { () => bringOutMenuBar()} className = 'hiddenLI pointer'>
+            {
+              props.isLoggedIn
+              ?
+                <p onClick = { () => handleLogout()}>Logout</p>
+              :
+                <p onClick = { () => {history.push('/login')}}>Login</p>
+            }
+          </li>
         </ul>
         <ul className = "ul flex">
-          <li className = 'link pointer'><p>Projects</p></li>
-          <li className = 'link pointer'><p>About</p></li>
-          <li className = 'link pointer'><p>Education</p></li>
-          <li className = 'link pointer'><p>Skills</p></li>
+            {
+              props.isLoggedIn
+              ?
+                <li className = 'link pointer'>
+                  <p onClick = { () => {history.push('/dashboard')}}>Dashboard</p>
+                </li>
+              :
+                null
+            }
+          <li className = 'link pointer'>
+            {
+              props.isLoggedIn
+              ?
+                <p onClick = { () => handleLogout()}>Logout</p>
+              :
+                <p onClick = { () => {history.push('/login')}}>Login</p>
+            }
+          </li>
         </ul>
       </nav>
     </div>
   )
 }
 
-export default Navbar
+const mapStateToProps = state => ({
+  isLoggedIn: state.isLoggedIn
+})
+
+const mapDispatchToProps = {
+  setLoggedIn: data => {
+    return { payload: data, type: 'SET_LOGGED_IN',}
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)

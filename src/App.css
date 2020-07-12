@@ -187,6 +187,10 @@ hr{
   padding-left: 5%;
 }
 
+.accountCard{
+  padding-bottom: 50px;
+}
+
 .errorBox{
   margin: 0 auto;
   width: 80%;

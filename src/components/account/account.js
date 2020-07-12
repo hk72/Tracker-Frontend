@@ -169,7 +169,7 @@ const Account = (props) => {
     <div className = "height100vh flex flexJustifyContentCenter backgroundColorGradiantGreen">
       <div className = "contentDiv height100vh">
         <div className = "accountCard">
-          <h2 className = "paddingLeft5percent colorWhite">Username</h2>
+          <h2 className = "paddingLeft5percent colorWhite">Change Username</h2>
           <hr className = "margin0auto"></hr>
           <form className = "textAlignCenter" onSubmit = {handleUsername}>
             {

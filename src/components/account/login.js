@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { Button, Icon } from 'semantic-ui-react'
 import history from '../../history'
+import { connect } from 'react-redux'
 
 const Login = (props) => {
 
@@ -27,6 +28,7 @@ const Login = (props) => {
       .then(res => {
         if(res.message === 'Auth Successful'){
           history.push('/user')
+          props.setLoggedIn('true')
         }
         else{
           setErrors(['Username or Password Incorrect.'])
@@ -82,7 +84,13 @@ const Login = (props) => {
   )
 }
 
-export default Login
+const mapDispatchToProps = {
+  setLoggedIn: data => {
+    return { payload: data, type: 'SET_LOGGED_IN',}
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Login)
 
 // import React from 'react'
 
