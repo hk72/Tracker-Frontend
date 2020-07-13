@@ -8,6 +8,9 @@ import Account from './components/account/account'
 import Login from './components/account/login'
 import Signup from './components/account/signup'
 import Dashboard from './components/dashboard/dashboard'
+import AddEvent from './components/addingData/addEvent'
+import AddData from './components/addingData/addData'
+import EventDisplay from './components/eventDisplay/eventDisplay'
 
 import './App.css';
 
@@ -41,6 +44,9 @@ const App = (props) => {
           <Navbar/>
           <Route exact path = '/user' component = {Account}/>
           <Route exact path = '/user/dashboard' component = {Dashboard}/>
+          <Route exact path = '/user/addEvent' component = {AddEvent}/>
+          <Route exact path = '/user/addData' component = {AddData}/>
+          <Route path = '/user/event/:id' component = {EventDisplay}/>
         </Route>
       </Router>
     </div>

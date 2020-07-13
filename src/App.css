@@ -97,6 +97,10 @@ hr{
 }
 
 .height100vh{
+  min-height: calc(100vh - 100px);
+}
+
+.height100vhNoNav{
   min-height: 100vh;
 }
 
@@ -126,13 +130,20 @@ hr{
 }
 
 .slowerTransition{
-  transition: right 10s ease 0s!important;
+  transition: right 1s ease 0s!important;
 }
 .slowerTransition2{
   transition: opacity 1s ease,transform 1s ease,-webkit-transform 1s ease !important;
 }
 .width80percent{
   width: 80%!important;
+}
+.overflowX{
+  overflow-x: auto;
+}
+
+.width800{
+  width: 800px;
 }
 
 .inputStyle{
@@ -249,6 +260,17 @@ hr{
   color: #09ca30;
 }
 
+.height40px{
+  min-height: 40px;
+  max-height: 40px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+select:focus{
+  outline: none !important;
+}
+
 #navbar{
   position: fixed;
   z-index: 5;
@@ -351,6 +373,25 @@ hr{
   margin: 0 0!important;
 }
 
+.cardMarginBottom{
+  margin-bottom: 2rem;
+}
+
+.cardTitle{
+  color: white;
+}
+
+.chartMaxHeight{
+  max-height: 70vh;
+  height: 70vh;
+}
+
+
+@media (max-width: 1192px){
+  .dashboardCards{
+    justify-content: center;
+  }
+}
 
 @media (max-width: 800px) {
   .hiddenUL{

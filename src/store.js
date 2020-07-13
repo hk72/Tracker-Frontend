@@ -2,7 +2,7 @@ import { createStore, compose, applyMiddleware } from 'redux'
 import ReduxThunk from 'redux-thunk'
 
 const initialState = {
-
+  isLoggedIn: false
 }
 
 const reducer = ( state, action ) => {

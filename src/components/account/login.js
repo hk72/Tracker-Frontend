@@ -40,7 +40,7 @@ const Login = (props) => {
   }
 
   return(
-    <div className="height100vh flex flexAlignItemsCenter flexJustifyContentCenter backgroundColorGradiantGreen">
+    <div className="height100vhNoNav flex flexAlignItemsCenter flexJustifyContentCenter backgroundColorGradiantGreen">
       <div className = "width400px textAlignCenter">
       <h1 className = "marginBottom100px colorWhite">Login</h1>
         <form onSubmit = {handleLogin}>
