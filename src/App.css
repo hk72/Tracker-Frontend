@@ -54,6 +54,8 @@ input{
 }
 
 hr{
+  border: 0;
+  border-bottom: 1px solid white;
   width: 95%;
 }
 
@@ -125,8 +127,11 @@ hr{
   margin-bottom: 50px!important;
 }
 
-.paddingTopBottom20px{
+.maginTopBottom20px{
   margin: 20px 0;
+}
+.paddingTopBottom20px{
+  padding: 20px 0;
 }
 
 .slowerTransition{
@@ -159,6 +164,10 @@ hr{
 
 .displayInline{
   display: inline;
+}
+
+.floatRight{
+  float: right;
 }
 
 .width400px{
@@ -208,6 +217,44 @@ hr{
 
 .paddingLeft5percent{
   padding-left: 5%;
+}
+
+.fontSize25px{
+  font-size: 25px!important;
+}
+
+.smallhr{
+  width: 90%;
+}
+
+.paddingBottom20px{
+  padding-bottom: 20px;
+}
+
+.paddingBottom5px{
+  padding-bottom: 5px;
+}
+
+.paddingTop25px{
+  padding-top: 25px;
+}
+
+.paddingRight15Percent{
+  padding-right: 15%;
+}
+
+.contentCard{
+  border: 1px solid white;
+  padding-top: 10px;
+  border-radius: 5px;
+}
+
+.paddingRight10Percent{
+  padding-right: 10%;
+}
+
+.paddingLeft8Percent{
+  padding-left: 8%;
 }
 
 .accountCard{

@@ -31,7 +31,8 @@ const Lines = (props) => {
           scales:{
             yAxes: [{
               ticks:{
-                fontColor:'white'
+                fontColor:'white',
+                beginAtZero: true
               }
             }],
             xAxes: [{
