@@ -23,10 +23,7 @@ const Lines = (props) => {
         height={400}
         options={{
           legend: {
-            labels: {
-              fontColor: "white",
-
-            }
+            display: false
           },
           scales:{
             yAxes: [{

@@ -113,7 +113,10 @@ hr{
 .pointer:hover{
   cursor: pointer;
 }
-
+.width1emheight8em{
+  width: 1em!important;
+  height: 0.8em!important;
+}
 .marginTopBottom100px{
   margin: 100px 0!important;
 }
@@ -127,7 +130,7 @@ hr{
   margin-bottom: 50px!important;
 }
 
-.maginTopBottom20px{
+.marginTopBottom20px{
   margin: 20px 0;
 }
 .paddingTopBottom20px{
@@ -136,7 +139,13 @@ hr{
 .paddingTopBottom50px{
   padding: 70px 0;
 }
+.rotate90{
+  transition: .5s;
+}
 
+.rotate90:hover{
+  transform: rotate(90deg);
+}
 .slowerTransition{
   transition: right 1s ease 0s!important;
 }
@@ -254,9 +263,10 @@ hr{
 
 .paddingRight30px{
   padding-right: 30px;
-
 }
-
+.paddingRight40px{
+  padding-right: 40px;
+}
 .contentCard{
   border: 1px solid white;
   padding-top: 10px;
@@ -443,8 +453,21 @@ select:focus{
 }
 
 .chartMaxHeight{
-  max-height: 70vh;
-  height: 70vh;
+  max-height: 100%;
+  height: 100%;
+}
+
+.wiggle:hover{
+  animation: shake .2s ease-in-out .1s infinite alternate;
+}
+
+@keyframes shake{
+  from{
+    transform: rotate(15deg);
+  }
+  to{
+    transform: rotate(-15deg);
+  }
 }
 
 
@@ -453,6 +476,7 @@ select:focus{
     justify-content: center;
   }
 }
+
 
 @media (max-width: 800px) {
   .hiddenUL{

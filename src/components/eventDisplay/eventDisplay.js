@@ -104,6 +104,7 @@ const EventDisplay = (props) => {
                 null
             :
               <div className = 'chartMaxHeight'>
+                <h2 className = "colorWhite">{eventData.name}</h2>
               {
                 value === 1
                 ?
@@ -140,14 +141,6 @@ const EventDisplay = (props) => {
                 :
                   null
               }
-                <div className = "paddingTop25px">
-                  <select id = 'select' onChange = {() => handleChart()} className = "height40px width80percent loginPageButtonColor colorWhite">
-                    <option value = '1'>Bar</option>
-                    <option value = '2'>Pie</option>
-                    <option value = '3'>Polar</option>
-                    <option value = '4'>Line</option>
-                  </select>
-                </div>
               </div>
           }
         </div>
@@ -158,10 +151,20 @@ const EventDisplay = (props) => {
             null
           :
           <div>
+            <div className = " textAlignCenter marginTopBottom50px">
+              <select id = 'select' onChange = {() => handleChart()} className = "height40px width80percent loginPageButtonColor colorWhite">
+                <option value = '1'>Bar</option>
+                <option value = '2'>Pie</option>
+                <option value = '3'>Polar</option>
+                <option value = '4'>Line</option>
+              </select>
+            </div>
             <div className = 'contentCard'>
               <div className = "paddingBottom20px">
                 <h2 className = "paddingLeft5percent colorWhite displayInline">Data</h2>
-                <Icon onClick = {() => history.push(`/user/${props.match.params.id}/addData`)} className = "displayInline floatRight margin0 paddingRight10Percent fontSize25px colorWhite" name='add circle' />
+                <div className = "displayInline floatRight margin0 paddingRight40px fontSize25px colorWhite">
+                  <Icon onClick = {() => history.push(`/user/${props.match.params.id}/addData`)} className = "rotate90 margin0 width1emheight8em" name='add circle' />
+                </div>
                 <hr className = "margin0auto"></hr>
               </div>
               <div>

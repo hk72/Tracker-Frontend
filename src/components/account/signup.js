@@ -53,7 +53,7 @@ const Signup = (props) => {
           .then(res => res.json())
           .then(res => {
             if(res.message === 'Auth Successful'){
-              history.push('/user')
+              history.push('/user/dashboard')
               props.setLoggedIn('true')
             }
             else{
