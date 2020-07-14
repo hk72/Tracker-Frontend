@@ -27,7 +27,7 @@ const AddEvent = (props) => {
 
     e.preventDefault()
 
-    const name = e.target['name'].value.toString()
+    const name = e.target['name'].value
 
     fetch('http://localhost:5000/api/event/createEvent',{
       method: 'POST',

@@ -9,8 +9,8 @@ const Login = (props) => {
 
   const handleLogin = (e) => {
 
-    const username = e.target['username'].value.toString()
-    const password = e.target['password'].value.toString()
+    const username = e.target['username'].value
+    const password = e.target['password'].value
 
     e.preventDefault()
 

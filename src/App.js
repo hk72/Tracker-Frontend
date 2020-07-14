@@ -9,6 +9,7 @@ import Login from './components/account/login'
 import Signup from './components/account/signup'
 import Dashboard from './components/dashboard/dashboard'
 import AddEvent from './components/addingData/addEvent'
+import UpdateData from './components/addingData/updateData'
 import AddData from './components/addingData/addData'
 import EventDisplay from './components/eventDisplay/eventDisplay'
 
@@ -45,7 +46,8 @@ const App = (props) => {
           <Route exact path = '/user' component = {Account}/>
           <Route exact path = '/user/dashboard' component = {Dashboard}/>
           <Route exact path = '/user/addEvent' component = {AddEvent}/>
-          <Route exact path = '/user/addData' component = {AddData}/>
+          <Route path = '/user/:id/updateData/:dataID' component = {UpdateData}/>
+          <Route path = '/user/:id/addData' component = {AddData}/>
           <Route path = '/user/event/:id' component = {EventDisplay}/>
         </Route>
       </Router>

@@ -3,16 +3,19 @@ import history from '../../history'
 import { Icon, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
-const AddData = (props) => {
+const UpdateData = (props) => {
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/user/profile', {
+    fetch(`http://localhost:5000/api/event/getEvent/${props.match.params.id}/${props.match.params.dataID}`, {
       method: 'GET',
       credentials: 'include'
     })
     .then(res => res.json())
     .then(res => {
-      if(res.message === "Internal Server Error"){
+      if(res.message === "Successful"){
+        props.setData(res)
+      }
+      else if(res.message === "Internal Server Error"){
         alert('An Error has Occured. Please Try Again.')
       }
       else if(res.message === "Auth Failed"){
@@ -24,25 +27,32 @@ const AddData = (props) => {
     })
   }, [])
 
-  const handleAdd = (e) =>{
+  const handleUpdate = (e) =>{
     e.preventDefault()
 
     let dataset = e.target['dataset'].value
     let label = e.target['label'].value
 
-    fetch(`http://localhost:5000/api/event/addData/${props.match.params.id}`,{
-      method: 'POST',
+    if(e.target['label'].value === ''){
+      label = props.data.label
+    }
+    if(e.target['dataset'].value === ''){
+      dataset = props.data.dataset
+    }
+
+    fetch(`http://localhost:5000/api/event/updateDataPoint/${props.match.params.id}/${props.match.params.dataID}`,{
+      method: 'PATCH',
       credentials: 'include',
       headers:{
         'Content-Type':'application/json'
       },
       body: JSON.stringify({
-        dataset: dataset,
-        label: label
+        datasets: dataset,
+        labels: label
       })})
       .then(res => res.json())
       .then(res => {
-        if(res.message === "Data Added"){
+        if(res.message === "Data Updated"){
           history.push(`/user/event/${props.match.params.id}`)
         }
         else if(res.message === "Internal Server Error"){
@@ -58,18 +68,18 @@ const AddData = (props) => {
     <div className = "height100vh flex flexAlignItemsCenter flexJustifyContentCenter backgroundColorGradiantGreen">
       <div className = "contentDiv">
         <div className = "accountCard">
-          <h2 className = "paddingLeft5percent colorWhite">Add Data Point</h2>
+          <h2 className = "paddingLeft5percent colorWhite">Update: {props.data.label}</h2>
           <hr className = "margin0auto"></hr>
-          <form className = "textAlignCenter" onSubmit = {handleAdd}>
+          <form className = "textAlignCenter" onSubmit = {handleUpdate}>
             <div className = "marginTopBottom50px">
-              <input className = "inputStyle colorWhite" type="number" placeholder="Data Point" required = "required" name = "dataset" />
+              <input className = "inputStyle colorWhite" type="number" placeholder={props.data.dataset} name = "dataset" />
             </div>
             <div className = "marginTopBottom50px">
-              <input className = "inputStyle colorWhite" type="text" placeholder="Data Label" required = "required" name = "label" />
+              <input className = "inputStyle colorWhite" type="text" placeholder={props.data.label} name = "label" />
             </div>
             <div>
               <Button className = "width80percent marginBottom50px loginPageButtonColor colorWhite" animated='fade'>
-                <Button.Content visible>Add Data Point</Button.Content>
+                <Button.Content visible>Update</Button.Content>
                 <Button.Content hidden><Icon name='line graph' /></Button.Content>
               </Button>
             </div>
@@ -80,4 +90,14 @@ const AddData = (props) => {
   )
 }
 
-export default AddData
+const mapStateToProps = state => ({
+  data: state.data
+})
+
+const mapDispatchToProps = {
+  setData: data => {
+    return { payload: data, type: 'SET_DATA',}
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UpdateData)

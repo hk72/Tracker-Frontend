@@ -36,7 +36,7 @@ const Account = (props) => {
   const handleUsername = (e) => {
   e.preventDefault()
 
-  const username = e.target['username'].value.toString()
+  const username = e.target['username'].value
 
   e.target['username'].value = ''
 
@@ -80,8 +80,8 @@ const Account = (props) => {
   const handlePassword = (e) => {
     e.preventDefault()
 
-    const currentPassword = e.target['currentPassword'].value.toString()
-    const newPassword = e.target['newPassword'].value.toString()
+    const currentPassword = e.target['currentPassword'].value
+    const newPassword = e.target['newPassword'].value
 
     if(e.target['newPassword'].value !== e.target['reNewPassword'].value){
       setPasswordErrors(['Make Sure New Passwords Match'])
@@ -133,7 +133,7 @@ const Account = (props) => {
   const handleDeletion = (e) => {
     e.preventDefault()
 
-    const password =  e.target['password'].value.toString()
+    const password =  e.target['password'].value
 
     fetch('http://localhost:5000/api/user/delete', {
       method: 'DELETE',

@@ -7,10 +7,11 @@ const Bars = (props) => {
   return(
     <div>
       <div id = 'bar' className = "overflowX">
+      {console.log(props)}
         <Bar
           data={{labels: props.eventData.data.labels,
             datasets: [{
-              label: 'Total Kills per Game',
+              label: props.eventData.name,
               data: props.eventData.data.datasets,
               backgroundColor: props.colors,
               borderWidth: 1,
@@ -25,7 +26,7 @@ const Bars = (props) => {
           options={{
             legend: {
               labels: {
-                fontColor: "white",
+                fontColor: "white"
 
               }
             },

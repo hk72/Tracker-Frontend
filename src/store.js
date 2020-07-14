@@ -2,7 +2,8 @@ import { createStore, compose, applyMiddleware } from 'redux'
 import ReduxThunk from 'redux-thunk'
 
 const initialState = {
-  isLoggedIn: false
+  isLoggedIn: false,
+  data: {}
 }
 
 const reducer = ( state, action ) => {
@@ -25,6 +26,22 @@ const reducer = ( state, action ) => {
           isLoggedIn: false
         }
       }
+    break
+    case 'SET_DATA':
+    if(localStorage.label === undefined){
+      localStorage.setItem('label', action.payload.label)
+    }
+    if(localStorage.dataset === undefined){
+      localStorage.setItem('dataset', action.payload.dataset)
+    }
+
+    localStorage.label = action.payload.label
+    localStorage.dataset = action.payload.dataset
+    state = {
+      ...state,
+      data: action.payload
+    }
+
     break
     default :
     break

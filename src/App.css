@@ -239,8 +239,13 @@ hr{
   padding-top: 25px;
 }
 
-.paddingRight15Percent{
-  padding-right: 15%;
+.paddingRight10Percent{
+  padding-right: 10%;
+}
+
+.paddingRight30px{
+  padding-right: 30px;
+
 }
 
 .contentCard{

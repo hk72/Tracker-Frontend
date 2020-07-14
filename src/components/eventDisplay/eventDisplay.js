@@ -70,6 +70,7 @@ const EventDisplay = (props) => {
       }
     })
     .catch(err => {
+      console.log(err)
       alert('An Error Has Occured. Please Try Again.')
     })
   }, [])
@@ -78,7 +79,6 @@ const EventDisplay = (props) => {
     <div className = "height100vh backgroundColorGradiantGreen">
       <div className = "contentDiv width80percent margin0auto">
         <div className = "textAlignCenter">
-          <h2 className = 'cardTitle'>h</h2>
           {
             eventData === null
             ?
@@ -141,11 +141,11 @@ const EventDisplay = (props) => {
           <div className = 'contentCard'>
             <div className = "paddingBottom20px">
               <h2 className = "paddingLeft5percent colorWhite displayInline">Data</h2>
-              <Icon className = "displayInline floatRight margin0 paddingRight10Percent fontSize25px colorWhite" name='add circle' />
+              <Icon onClick = {() => history.push(`/user/${props.match.params.id}/addData`)} className = "displayInline floatRight margin0 paddingRight10Percent fontSize25px colorWhite" name='add circle' />
               <hr className = "margin0auto"></hr>
             </div>
             <div>
-              {parsedData.map(info => <Data key = {info.key} info = {info}/>)}
+              {parsedData.map(info => <Data key = {info.key} info = {info} id = {props.match.params.id}/>)}
             </div>
             </div>
           }
@@ -154,7 +154,5 @@ const EventDisplay = (props) => {
     </div>
   )
 }
-
-// Array(props.data.length).map((x) => x)
 
 export default EventDisplay
