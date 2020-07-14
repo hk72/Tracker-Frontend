@@ -6,8 +6,6 @@ const Data = (props) => {
 
   const handleDelete = () => {
 
-    const div = document.getElementById('dataDiv')
-
     fetch(`http://localhost:5000/api/event/deleteData/${props.id}/${props.info.key}`, {
       method: 'DELETE',
       credentials: 'include'

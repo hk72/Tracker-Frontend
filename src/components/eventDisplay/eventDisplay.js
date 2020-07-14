@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import history from '../../history'
-import { Icon } from 'semantic-ui-react'
+import { Button, Icon } from 'semantic-ui-react'
 import Bars from './bar'
 import Pies from './pie'
 import Polars from './polar'
@@ -37,6 +37,25 @@ const EventDisplay = (props) => {
     else{
       setValue(4)
     }
+  }
+
+  const handleDelete = () => {
+    fetch(`http://localhost:5000/api/event/deleteEvent/${props.match.params.id}`, {
+      method: 'DELETE',
+      credentials: 'include'
+    })
+    .then(res => res.json())
+    .then(res => {
+      if(res.message === 'Event Deleted'){
+        history.push('/user/dashboard')
+      }
+      else if(res.message === "Internal Server Error"){
+        alert('An Error has Occured. Please Try Again.')
+      }
+      else if(res.message === "Auth Failed"){
+        history.push('/login')
+      }
+    })
   }
 
   const dynamicColors = () => {
@@ -138,16 +157,24 @@ const EventDisplay = (props) => {
           ?
             null
           :
-          <div className = 'contentCard'>
-            <div className = "paddingBottom20px">
-              <h2 className = "paddingLeft5percent colorWhite displayInline">Data</h2>
-              <Icon onClick = {() => history.push(`/user/${props.match.params.id}/addData`)} className = "displayInline floatRight margin0 paddingRight10Percent fontSize25px colorWhite" name='add circle' />
-              <hr className = "margin0auto"></hr>
+          <div>
+            <div className = 'contentCard'>
+              <div className = "paddingBottom20px">
+                <h2 className = "paddingLeft5percent colorWhite displayInline">Data</h2>
+                <Icon onClick = {() => history.push(`/user/${props.match.params.id}/addData`)} className = "displayInline floatRight margin0 paddingRight10Percent fontSize25px colorWhite" name='add circle' />
+                <hr className = "margin0auto"></hr>
+              </div>
+              <div>
+                {parsedData.map(info => <Data key = {info.key} info = {info} id = {props.match.params.id}/>)}
+              </div>
             </div>
-            <div>
-              {parsedData.map(info => <Data key = {info.key} info = {info} id = {props.match.params.id}/>)}
+            <div className = "textAlignCenter paddingTopBottom50px">
+              <Button onClick = {() => handleDelete()} className = "width80percent colorRed colorWhite" animated='fade'>
+                <Button.Content visible>Delete Event</Button.Content>
+                <Button.Content hidden><Icon name='trash alternate' /></Button.Content>
+              </Button>
             </div>
-            </div>
+          </div>
           }
         </div>
       </div>

@@ -133,6 +133,9 @@ hr{
 .paddingTopBottom20px{
   padding: 20px 0;
 }
+.paddingTopBottom50px{
+  padding: 70px 0;
+}
 
 .slowerTransition{
   transition: right 1s ease 0s!important;
@@ -186,6 +189,12 @@ hr{
 
 .loginPageButtonColor{
   background: #a7b8b9!important;
+  min-width: 290px;
+}
+
+.colorRed{
+  border: 3px solid #ff5252!important;
+  background: #FF7272!important;
   min-width: 290px;
 }
 
