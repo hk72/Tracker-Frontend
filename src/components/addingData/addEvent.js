@@ -5,6 +5,7 @@ import history from '../../history'
 const AddEvent = (props) => {
 
   useEffect(() => {
+
     fetch('http://localhost:5000/api/user/profile', {
       method: 'GET',
       credentials: 'include'
@@ -21,25 +22,98 @@ const AddEvent = (props) => {
     .catch(err => {
       alert('An Error Has Occured. Please Try Again.')
     })
+
+    document.querySelectorAll(".drop-zone__input").forEach(inputElement => {
+
+      const dropZoneElement = inputElement.closest('.drop-zone')
+
+      console.log(inputElement)
+
+      dropZoneElement.addEventListener('click', e => {
+        inputElement.click();
+      })
+
+      inputElement.addEventListener("change", e => {
+        if(inputElement.files.length){
+          updateThumbnail(dropZoneElement, inputElement.files[0])
+        }
+      })
+
+      dropZoneElement.addEventListener("dragover", e => {
+        e.preventDefault()
+        dropZoneElement.classList.add("drop-zone--over")
+      })
+
+      const arr = ["dragleave", "dragend"]
+
+      arr.forEach(type => {
+        dropZoneElement.addEventListener(type, e => {
+          dropZoneElement.classList.remove('drop-zone--over')
+        })
+      })
+
+      dropZoneElement.addEventListener("drop", e => {
+        e.preventDefault()
+
+        if(e.dataTransfer.files.length){
+          inputElement.files = e.dataTransfer.files;
+          console.log(e.dataTransfer.files)
+          updateThumbnail(dropZoneElement, e.dataTransfer.files[0] )
+        }
+
+        dropZoneElement.classList.remove('drop-zone--over')
+      })
+    })
   }, [])
+
+  const updateThumbnail = (dropZoneElement, file) => {
+    let thumbnailElement = dropZoneElement.querySelector('.drop-zone__thumb')
+
+    if(dropZoneElement.querySelector('.drop-zone__prompt')){
+      dropZoneElement.querySelector('.drop-zone__prompt').remove()
+    }
+
+    if(!thumbnailElement){
+      thumbnailElement = document.createElement('div')
+      thumbnailElement.classList.add('drop-zone__thumb')
+      dropZoneElement.appendChild(thumbnailElement)
+    }
+
+    if(file.type.startsWith('image/jpeg') || file.type.startsWith('image/png')){
+      const reader = new FileReader()
+
+      thumbnailElement.dataset.label = file.name
+
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        thumbnailElement.style.backgroundImage = `url('${reader.result}')`
+      }
+    }
+    else{
+      thumbnailElement.dataset.label = 'Invalid File Type. Please use .jpeg or .png'
+      thumbnailElement.style.backgroundImage = null
+    }
+  }
 
   const handleEvent = (e) => {
 
     e.preventDefault()
 
     const name = e.target['name'].value
+    const eventImage = document.querySelector(".drop-zone__input")
+
+    let data = new FormData()
+    data.append('eventImage', eventImage.files[0])
+    data.append('name', name)
 
     fetch('http://localhost:5000/api/event/createEvent',{
       method: 'POST',
       credentials: 'include',
-      headers:{
-        'Content-Type':'application/json'
-      },
-      body: JSON.stringify({
-        name: name
-      })})
+      body: data
+    })
       .then(res => res.json())
       .then(res => {
+        console.log(res)
         if(res.message === "Auth Failed"){
           history.push('/login')
         }
@@ -52,6 +126,7 @@ const AddEvent = (props) => {
       })
     }
 
+
   return(
     <div className = "height100vh flex flexAlignItemsCenter flexJustifyContentCenter backgroundColorGradiantGreen">
       <div className = "contentDiv">
@@ -59,6 +134,10 @@ const AddEvent = (props) => {
           <h2 className = "paddingLeft5percent colorWhite">Add Event</h2>
           <hr className = "margin0auto"></hr>
           <form className = "textAlignCenter" onSubmit = {handleEvent}>
+            <div className = 'drop-zone pointer margin0auto marginTop50px'>
+              <span className = 'drop-zone__prompt'>Drop file here or click to upload</span>
+              <input type = 'file' name = 'eventImage' className = 'drop-zone__input'/>
+            </div>
             <div className = "marginTopBottom50px">
               <input className = "inputStyle colorWhite" type="text" placeholder="Event Name" required="required" name = "name" />
             </div>
