@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react'
-import { Icon, Button } from 'semantic-ui-react'
+import { Button, Icon } from 'semantic-ui-react'
 import history from '../../history'
 
-const AddEvent = (props) => {
+const UpdateEvent = (props) => {
 
   useEffect(() => {
 
@@ -13,7 +13,7 @@ const AddEvent = (props) => {
     .then(res => res.json())
     .then(res => {
       if(res.message === "Auth Failed"){
-        history.replace('/login')
+        history.push('/login')
       }
     })
     .catch(err => {
@@ -24,7 +24,7 @@ const AddEvent = (props) => {
 
       const dropZoneElement = inputElement.closest('.drop-zone')
 
-      console.log(inputElement)
+
 
       dropZoneElement.addEventListener('click', e => {
         inputElement.click();
@@ -54,7 +54,6 @@ const AddEvent = (props) => {
 
         if(e.dataTransfer.files.length){
           inputElement.files = e.dataTransfer.files;
-          console.log(e.dataTransfer.files)
           updateThumbnail(dropZoneElement, e.dataTransfer.files[0] )
         }
 
@@ -92,8 +91,7 @@ const AddEvent = (props) => {
     }
   }
 
-  const handleEvent = (e) => {
-
+  const handleUpdate = (e) => {
     e.preventDefault()
 
     const name = e.target['name'].value
@@ -103,51 +101,47 @@ const AddEvent = (props) => {
     data.append('eventImage', eventImage.files[0])
     data.append('name', name)
 
-    fetch('http://localhost:5000/api/event/createEvent',{
-      method: 'POST',
+    fetch(`http://localhost:5000/api/event/updateEvent/${props.event._id}`,{
+      method: 'PATCH',
       credentials: 'include',
       body: data
     })
       .then(res => res.json())
       .then(res => {
+        console.log(res)
         if(res.message === "Auth Failed"){
-          history.replace('/login')
+          history.push('/login')
         }
         else if(res.message === "Internal Server Error"){
           alert('An Error has Occured. Please Try Again.')
         }
-        else if(res.message === "Event Created"){
+        else if(res.message === "Event Updated"){
           history.push('/user/dashboard')
         }
       })
-    }
-
+  }
 
   return(
-    <div className = "height100vh flex flexAlignItemsCenter flexJustifyContentCenter backgroundColorGradiantGreen">
-      <div className = "contentDiv">
-        <div className = "accountCard">
-          <h2 className = "paddingLeft5percent colorWhite">Add Event</h2>
-          <hr className = "margin0auto"></hr>
-          <form className = "textAlignCenter" onSubmit = {handleEvent}>
-            <div className = 'drop-zone pointer margin0auto marginTop50px'>
-              <span className = 'drop-zone__prompt'>Drop file here or click to upload</span>
-              <input type = 'file' name = 'eventImage' className = 'drop-zone__input'/>
-            </div>
-            <div className = "marginTopBottom50px">
-              <input className = "inputStyle colorWhite" type="text" placeholder="Event Name" required="required" name = "name" />
-            </div>
-            <div>
-              <Button className = "width80percent marginBottom50px loginPageButtonColor colorWhite" animated='fade'>
-                <Button.Content visible>Add Event</Button.Content>
-                <Button.Content hidden><Icon name='line graph' /></Button.Content>
-              </Button>
-            </div>
-          </form>
+    <div className = "accountCard paddingTop50px">
+      <h2 className = "paddingLeft5percent colorWhite">Update Event Info</h2>
+      <hr className = "margin0auto"></hr>
+      <form className = "textAlignCenter" onSubmit = {handleUpdate} >
+        <div className = 'drop-zone pointer margin0auto marginTop50px'>
+          <span className = 'drop-zone__prompt'>Drop file here or click to upload</span>
+          <input type = 'file' name = 'eventImage' className = 'drop-zone__input'/>
         </div>
-      </div>
+        <div className = "marginTopBottom50px">
+          <input className = "inputStyle colorWhite" type="text" placeholder={props.event.name} name = "name" required = "require"/>
+        </div>
+        <div>
+          <Button className = "width80percent marginBottom50px loginPageButtonColor colorWhite" animated='fade'>
+            <Button.Content visible>Update Event</Button.Content>
+            <Button.Content hidden><Icon name='line graph' /></Button.Content>
+          </Button>
+        </div>
+      </form>
     </div>
   )
 }
 
-export default AddEvent
+export default UpdateEvent

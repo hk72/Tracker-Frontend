@@ -19,7 +19,7 @@ const UpdateData = (props) => {
         alert('An Error has Occured. Please Try Again.')
       }
       else if(res.message === "Auth Failed"){
-        history.push('/login')
+        history.replace('/login')
       }
     })
     .catch(err => {
@@ -59,7 +59,7 @@ const UpdateData = (props) => {
           alert('An Error has Occured. Please Try Again.')
         }
         else if(res.message === "Auth Failed"){
-          history.push('/login')
+          history.replace('/login')
         }
       })
   }

@@ -14,22 +14,23 @@ const Navbar = (props) => {
 
     const navbar = document.getElementById('navbar')
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop
-
-    if(menu){
-      navbar.style.boxShadow = 'none';
-      navbar.style.top = '0px';
-    }
-    else if(scrollTop === 0){
-      navbar.style.boxShadow = 'none';
-      navbar.style.top = '0px';
-    }
-    else if(scrollTop > lastScrollTop){
-      navbar.style.top = '-80px';
-      navbar.style.boxShadow = 'none';
-    }
-    else{
-      navbar.style.top = '0px';
-      navbar.style.boxShadow = '0 3px 20px black';
+    if(navbar !==null){
+      if(menu){
+        navbar.style.boxShadow = 'none';
+        navbar.style.top = '0px';
+      }
+      else if(scrollTop === 0){
+        navbar.style.boxShadow = 'none';
+        navbar.style.top = '0px';
+      }
+      else if(scrollTop > lastScrollTop){
+        navbar.style.top = '-80px';
+        navbar.style.boxShadow = 'none';
+      }
+      else{
+        navbar.style.top = '0px';
+        navbar.style.boxShadow = '0 3px 20px black';
+      }
     }
 
     lastScrollTop = scrollTop

@@ -4,6 +4,7 @@ import { Route } from 'react-router'
 import history from './history'
 import { connect } from 'react-redux'
 import Navbar from './components/navbar/navbar'
+import Footer from './components/footer/footer'
 import Account from './components/account/account'
 import Login from './components/account/login'
 import Signup from './components/account/signup'
@@ -49,6 +50,7 @@ const App = (props) => {
           <Route path = '/user/:id/updateData/:dataID' component = {UpdateData}/>
           <Route path = '/user/:id/addData' component = {AddData}/>
           <Route path = '/user/event/:id' component = {EventDisplay}/>
+          <Footer/>
         </Route>
       </Router>
     </div>

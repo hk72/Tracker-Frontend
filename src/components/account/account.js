@@ -25,7 +25,7 @@ const Account = (props) => {
         alert('An Error has Occured. Please Try Again.')
       }
       else if(res.message === "Auth Failed"){
-        history.push('/login')
+        history.replace('/login')
       }
     })
     .catch(err => {
@@ -64,7 +64,7 @@ const Account = (props) => {
       }
       else if(res.message === "Auth Failed"){
         props.setLoggedIn('false')
-        history.push('/login')
+        history.replace('/login')
       }
       else{
         setUsername(username)
@@ -117,7 +117,7 @@ const Account = (props) => {
             setPasswordSuccess([])
           }
           else if(res.message === "Auth Failed"){
-            history.push('/login')
+            history.replace('/login')
           }
           else{
             setPasswordSuccess(['Password Updated'])
@@ -150,14 +150,14 @@ const Account = (props) => {
         setDeletionErrors(['Ensure Current Password is Correct'])
       }
       else if(res.message === "Auth Failed"){
-        history.push('/login')
+        history.replace('/login')
       }
       else if(res.message === "Internal Server Error"){
         setDeletionErrors(['Internal Server Error'])
       }
       else{
         setDeletionErrors([])
-        history.push('/signup')
+        history.replace('/signup')
       }
     })
     .catch(err => {

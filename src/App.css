@@ -59,6 +59,16 @@ hr{
   width: 95%;
 }
 
+.aTag{
+  color: white;
+  font-size: 25px;
+  padding-top: 10px;
+}
+
+.aTag:hover{
+  color: #cccccc;
+}
+
 .flex{
   display: flex;
 }
@@ -99,13 +109,17 @@ hr{
 }
 
 .height100vh{
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh - 200px);
 }
 
 .height100vhNoNav{
   min-height: 100vh;
 }
-
+.footer{
+  height: 100px;
+  width: 100%;
+  background-color: black;
+}
 .textAlignCenter{
   text-align: center;
 }
@@ -304,6 +318,9 @@ hr{
 
 .paddingTop25px{
   padding-top: 25px;
+}
+.paddingTop50px{
+  padding-top: 50px;
 }
 
 .paddingRight10Percent{

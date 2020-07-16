@@ -6,6 +6,7 @@ import Pies from './pie'
 import Polars from './polar'
 import Lines from './line'
 import Data from './data'
+import UpdateEvent from '../addingData/updateEvent'
 
 const EventDisplay = (props) => {
 
@@ -89,7 +90,6 @@ const EventDisplay = (props) => {
       }
     })
     .catch(err => {
-      console.log(err)
       alert('An Error Has Occured. Please Try Again.')
     })
   }, [])
@@ -171,7 +171,8 @@ const EventDisplay = (props) => {
                 {parsedData.map(info => <Data key = {info.key} info = {info} id = {props.match.params.id}/>)}
               </div>
             </div>
-            <div className = "textAlignCenter paddingTopBottom50px">
+            <UpdateEvent event = {eventData}/>
+            <div className = "textAlignCenter paddingBottom20px">
               <Button onClick = {() => handleDelete()} className = "width80percent colorRed colorWhite" animated='fade'>
                 <Button.Content visible>Delete Event</Button.Content>
                 <Button.Content hidden><Icon name='trash alternate' /></Button.Content>

@@ -16,7 +16,7 @@ const Dashboard = (props) => {
     .then(res => res.json())
     .then(res => {
       if(res.message === "Auth Failed"){
-        history.push('/login')
+        history.replace('/login')
       }
       else if(res.message === "Internal Server Error"){
         alert('An Error Has Occured. Please Try Again.')

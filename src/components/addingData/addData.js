@@ -6,17 +6,14 @@ import { connect } from 'react-redux'
 const AddData = (props) => {
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/user/profile', {
+    fetch('http://localhost:5000/api/user/quickAuth', {
       method: 'GET',
       credentials: 'include'
     })
     .then(res => res.json())
     .then(res => {
-      if(res.message === "Internal Server Error"){
-        alert('An Error has Occured. Please Try Again.')
-      }
-      else if(res.message === "Auth Failed"){
-        history.push('/login')
+      if(res.message === "Auth Failed"){
+        history.replace('/login')
       }
     })
     .catch(err => {
@@ -49,7 +46,7 @@ const AddData = (props) => {
           alert('An Error has Occured. Please Try Again.')
         }
         else if(res.message === "Auth Failed"){
-          history.push('/login')
+          history.replace('/login')
         }
       })
   }
