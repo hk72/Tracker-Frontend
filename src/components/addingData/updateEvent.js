@@ -1,8 +1,10 @@
-import React, {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Button, Icon } from 'semantic-ui-react'
 import history from '../../history'
 
 const UpdateEvent = (props) => {
+
+  const [errors, setErrors] = useState([])
 
   useEffect(() => {
 
@@ -13,7 +15,7 @@ const UpdateEvent = (props) => {
     .then(res => res.json())
     .then(res => {
       if(res.message === "Auth Failed"){
-        history.push('/login')
+        history.replace('/login')
       }
     })
     .catch(err => {
@@ -23,8 +25,6 @@ const UpdateEvent = (props) => {
     document.querySelectorAll(".drop-zone__input").forEach(inputElement => {
 
       const dropZoneElement = inputElement.closest('.drop-zone')
-
-
 
       dropZoneElement.addEventListener('click', e => {
         inputElement.click();
@@ -110,13 +110,22 @@ const UpdateEvent = (props) => {
       .then(res => {
         console.log(res)
         if(res.message === "Auth Failed"){
-          history.push('/login')
+          history.replace('/login')
         }
         else if(res.message === "Internal Server Error"){
           alert('An Error has Occured. Please Try Again.')
         }
         else if(res.message === "Event Updated"){
           history.push('/user/dashboard')
+        }
+        else if(res.message === "Event Validation Failed"){
+          setErrors([
+              'Ensure Name is between 1-50 Characters.',
+              'Ensure Name does not have Special Characters.'
+            ])
+        }
+        else if(res.error.message === "Incorrect File Type"){
+          setErrors(['Ensure file is .png or .jpeg'])
         }
       })
   }
@@ -126,6 +135,22 @@ const UpdateEvent = (props) => {
       <h2 className = "paddingLeft5percent colorWhite">Update Event Info</h2>
       <hr className = "margin0auto"></hr>
       <form className = "textAlignCenter" onSubmit = {handleUpdate} >
+        {
+          errors.length !== 0
+          ?
+            <div className = "paddingTopBottom20px">
+              <div className = "errorBox textAlignCenter">
+                <h3>Errors</h3>
+                  <ul className = "popUpUL">
+                    {errors.map((err, index) => {
+                      return <li key = {index} className = "errorText">{err}</li>
+                    })}
+                  </ul>
+              </div>
+            </div>
+          :
+          null
+        }
         <div className = 'drop-zone pointer margin0auto marginTop50px'>
           <span className = 'drop-zone__prompt'>Drop file here or click to upload</span>
           <input type = 'file' name = 'eventImage' className = 'drop-zone__input'/>

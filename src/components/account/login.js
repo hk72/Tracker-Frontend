@@ -30,6 +30,9 @@ const Login = (props) => {
           history.replace('/user/dashboard')
           props.setLoggedIn('true')
         }
+        if(res.message === 'Internal Server Error'){
+          alert('An Error Has Occured. Please Try Again.')
+        }
         else{
           setErrors(['Username or Password Incorrect.'])
         }

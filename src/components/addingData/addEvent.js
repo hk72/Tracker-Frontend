@@ -1,8 +1,10 @@
-import React, {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Icon, Button } from 'semantic-ui-react'
 import history from '../../history'
 
 const AddEvent = (props) => {
+
+  const [errors, setErrors] = useState([])
 
   useEffect(() => {
 
@@ -23,8 +25,6 @@ const AddEvent = (props) => {
     document.querySelectorAll(".drop-zone__input").forEach(inputElement => {
 
       const dropZoneElement = inputElement.closest('.drop-zone')
-
-      console.log(inputElement)
 
       dropZoneElement.addEventListener('click', e => {
         inputElement.click();
@@ -110,6 +110,7 @@ const AddEvent = (props) => {
     })
       .then(res => res.json())
       .then(res => {
+        console.log(res)
         if(res.message === "Auth Failed"){
           history.replace('/login')
         }
@@ -118,6 +119,15 @@ const AddEvent = (props) => {
         }
         else if(res.message === "Event Created"){
           history.push('/user/dashboard')
+        }
+        else if(res.message === "Event Validation Failed"){
+          setErrors([
+              'Ensure Name is between 1-50 Characters.',
+              'Ensure Name does not have Special Characters.'
+            ])
+        }
+        else if(res.error.message === "Incorrect File Type"){
+          setErrors(['Ensure file is .png or .jpeg'])
         }
       })
     }
@@ -130,6 +140,22 @@ const AddEvent = (props) => {
           <h2 className = "paddingLeft5percent colorWhite">Add Event</h2>
           <hr className = "margin0auto"></hr>
           <form className = "textAlignCenter" onSubmit = {handleEvent}>
+            {
+              errors.length !== 0
+              ?
+                <div className = "paddingTopBottom20px">
+                  <div className = "errorBox textAlignCenter">
+                    <h3>Errors</h3>
+                      <ul className = "popUpUL">
+                        {errors.map((err, index) => {
+                          return <li key = {index} className = "errorText">{err}</li>
+                        })}
+                      </ul>
+                  </div>
+                </div>
+              :
+              null
+            }
             <div className = 'drop-zone pointer margin0auto marginTop50px'>
               <span className = 'drop-zone__prompt'>Drop file here or click to upload</span>
               <input type = 'file' name = 'eventImage' className = 'drop-zone__input'/>

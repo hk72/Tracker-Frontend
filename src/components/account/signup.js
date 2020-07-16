@@ -31,15 +31,18 @@ const Signup = (props) => {
     .then(res => res.json())
     .then(res => {
       if(res.message === 'Internal Server Error'){
+        alert('An Error Has Occured. Please Try Again.')
+      }
+      else if(res.message === 'Username Exists'){
+        setErrors(['Username Taken.'])
+      }
+      else if(res.message === "User Validation Failed"){
         setErrors([
             'Ensure Username is between 4-20 Characters.',
             'Ensure Username does not have Special Characters.'
           ])
       }
-      else if(res.message === 'Username Exists'){
-        setErrors(['Username Taken.'])
-      }
-      else{
+      else if(res.message === "User Created"){
         fetch('http://localhost:5000/api/user/login',{
           method: 'POST',
           credentials: 'include',
@@ -55,6 +58,9 @@ const Signup = (props) => {
             if(res.message === 'Auth Successful'){
               history.replace('/user/dashboard')
               props.setLoggedIn('true')
+            }
+            else if(res.message === 'Internal Server Error'){
+              alert('An Error Has Occured. Please Try Again.')
             }
             else{
               setErrors(['Auth Failed.'])

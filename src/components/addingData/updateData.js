@@ -1,9 +1,11 @@
-import React, {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import history from '../../history'
 import { Icon, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
 const UpdateData = (props) => {
+
+  const [errors, setErrors] = useState([])
 
   useEffect(() => {
     fetch(`http://localhost:5000/api/event/getEvent/${props.match.params.id}/${props.match.params.dataID}`, {
@@ -55,6 +57,12 @@ const UpdateData = (props) => {
         if(res.message === "Data Updated"){
           history.push(`/user/event/${props.match.params.id}`)
         }
+        else if(res.message === "Data Validation Failed"){
+          setErrors([
+              'Ensure Data Label is between 4-20 Characters.',
+              'Ensure Data Label does not have Special Characters.'
+            ])
+        }
         else if(res.message === "Internal Server Error"){
           alert('An Error has Occured. Please Try Again.')
         }
@@ -71,6 +79,22 @@ const UpdateData = (props) => {
           <h2 className = "paddingLeft5percent colorWhite">Update: {props.data.label}</h2>
           <hr className = "margin0auto"></hr>
           <form className = "textAlignCenter" onSubmit = {handleUpdate}>
+            {
+              errors.length !== 0
+              ?
+                <div className = "paddingTopBottom20px">
+                  <div className = "errorBox textAlignCenter">
+                    <h3>Errors</h3>
+                      <ul className = "popUpUL">
+                        {errors.map((err, index) => {
+                          return <li key = {index} className = "errorText">{err}</li>
+                        })}
+                      </ul>
+                  </div>
+                </div>
+              :
+              null
+            }
             <div className = "marginTopBottom50px">
               <input className = "inputStyle colorWhite" type="number" placeholder={props.data.dataset} name = "dataset" />
             </div>

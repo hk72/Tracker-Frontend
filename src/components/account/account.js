@@ -51,12 +51,15 @@ const Account = (props) => {
     })})
     .then(res => res.json())
     .then(res => {
-      if(res.message === "Internal Server Error"){
+      if(res.message === "User Validation Failed"){
         setUsernameErrors([
           'Ensure Username is between 4-20 Characters.',
           'Ensure Username does not have Special Characters.'
         ])
         setUsernameSuccess([])
+      }
+      else if(res.message === 'Internal Server Error'){
+        alert('An Error Has Occured. Please Try Again.')
       }
       else if(res.message === "Username Exists"){
         setUsernameErrors(["Username Exists"])
@@ -113,8 +116,7 @@ const Account = (props) => {
             setPasswordSuccess([])
           }
           else if(res.message === "Internal Server Error"){
-            setPasswordErrors(['Internal Server Error'])
-            setPasswordSuccess([])
+            alert('An Error Has Occured. Please Try Again.')
           }
           else if(res.message === "Auth Failed"){
             history.replace('/login')
@@ -153,7 +155,7 @@ const Account = (props) => {
         history.replace('/login')
       }
       else if(res.message === "Internal Server Error"){
-        setDeletionErrors(['Internal Server Error'])
+        alert('An Error Has Occured. Please Try Again.')
       }
       else{
         setDeletionErrors([])

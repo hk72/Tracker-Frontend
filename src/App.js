@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { Router } from 'react-router-dom'
+import { Router, Switch } from 'react-router-dom'
 import { Route } from 'react-router'
 import history from './history'
 import { connect } from 'react-redux'
@@ -13,6 +13,8 @@ import AddEvent from './components/addingData/addEvent'
 import UpdateData from './components/addingData/updateData'
 import AddData from './components/addingData/addData'
 import EventDisplay from './components/eventDisplay/eventDisplay'
+import NoMatch from './components/noMatch/noMatch'
+import Main from './components/main/main'
 
 import './App.css';
 
@@ -39,19 +41,62 @@ const App = (props) => {
 
   return (
     <div>
+    {console.log(props)}
       <Router history = {history} >
-        <Route exact path = '/login' component = {Login}/>
-        <Route exact path = '/signup' component = {Signup}/>
-        <Route path ='/user'>
-          <Navbar/>
-          <Route exact path = '/user' component = {Account}/>
-          <Route exact path = '/user/dashboard' component = {Dashboard}/>
-          <Route exact path = '/user/addEvent' component = {AddEvent}/>
-          <Route path = '/user/:id/updateData/:dataID' component = {UpdateData}/>
-          <Route path = '/user/:id/addData' component = {AddData}/>
-          <Route path = '/user/event/:id' component = {EventDisplay}/>
-          <Footer/>
-        </Route>
+        <Switch>
+          <Route exact path = '/login' component = {Login}/>
+          <Route exact path = '/signup' component = {Signup}/>
+          <Route exact path='/' render={props =>
+            <div>
+              <Navbar />
+              <Main {...props}/>
+              <Footer />
+            </div>
+          } />
+          <Route exact path='/user' render={props =>
+            <div>
+              <Navbar />
+              <Account {...props}/>
+              <Footer />
+            </div>
+          } />
+          <Route exact path='/user/dashboard' render={props =>
+            <div>
+              <Navbar />
+              <Dashboard {...props}/>
+              <Footer />
+            </div>
+          } />
+          <Route exact path='/user/addEvent' render={props =>
+            <div>
+              <Navbar />
+              <AddEvent {...props}/>
+              <Footer />
+            </div>
+          } />
+          <Route exact path='/user/:id/updateData/:dataID' render={props =>
+            <div>
+              <Navbar />
+              <UpdateData {...props}/>
+              <Footer />
+            </div>
+          } />
+          <Route exact path='/user/:id/addData' render={props =>
+            <div>
+              <Navbar />
+              <AddData {...props}/>
+              <Footer />
+            </div>
+          } />
+          <Route path='/user/event/:id' render={props =>
+            <div>
+              <Navbar />
+              <EventDisplay {...props}/>
+              <Footer />
+            </div>
+          } />
+          <Route path="*" component={NoMatch} />
+        </Switch>
       </Router>
     </div>
   );

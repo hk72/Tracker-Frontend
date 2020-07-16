@@ -61,7 +61,7 @@ const Navbar = (props) => {
     .then(res => res.json())
     .then(res => {
       if(res.message === "Log Out Successful"){
-        history.push('/')
+        history.replace('/')
         props.setLoggedIn('false')
       }
     })

@@ -48,13 +48,13 @@ const EventDisplay = (props) => {
     .then(res => res.json())
     .then(res => {
       if(res.message === 'Event Deleted'){
-        history.push('/user/dashboard')
+        history.replace('/user/dashboard')
       }
       else if(res.message === "Internal Server Error"){
         alert('An Error has Occured. Please Try Again.')
       }
       else if(res.message === "Auth Failed"){
-        history.push('/login')
+        history.replace('/login')
       }
     })
   }
@@ -67,6 +67,7 @@ const EventDisplay = (props) => {
          };
 
   useEffect(() => {
+    console.log(history)
     fetch(`http://localhost:5000/api/event/getEventsData/${props.match.params.id}`, {
       method: 'GET',
       credentials: 'include'
@@ -77,7 +78,7 @@ const EventDisplay = (props) => {
         alert('An Error has Occured. Please Try Again.')
       }
       else if(res.message === "Auth Failed"){
-        history.push('/login')
+        history.replace('/login')
       }
       else if(res.message === "Successful"){
         for(let i = 0; i<res.data.data.labels.length; i++){
