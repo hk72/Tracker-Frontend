@@ -67,7 +67,6 @@ const EventDisplay = (props) => {
          };
 
   useEffect(() => {
-    console.log(history)
     fetch(`https://thetechiechart.herokuapp.com/api/event/getEventsData/${props.match.params.id}`, {
       method: 'GET',
       credentials: 'include'

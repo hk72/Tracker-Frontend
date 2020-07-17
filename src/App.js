@@ -41,7 +41,6 @@ const App = (props) => {
 
   return (
     <div>
-    {console.log(props)}
       <Router history = {history} >
         <Switch>
           <Route exact path = '/login' component = {Login}/>

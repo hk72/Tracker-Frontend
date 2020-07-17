@@ -54,7 +54,6 @@ const AddEvent = (props) => {
 
         if(e.dataTransfer.files.length){
           inputElement.files = e.dataTransfer.files;
-          console.log(e.dataTransfer.files)
           updateThumbnail(dropZoneElement, e.dataTransfer.files[0] )
         }
 
@@ -110,7 +109,6 @@ const AddEvent = (props) => {
     })
       .then(res => res.json())
       .then(res => {
-        console.log(res)
         if(res.message === "Auth Failed"){
           history.replace('/login')
         }
