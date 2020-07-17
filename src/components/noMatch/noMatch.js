@@ -15,7 +15,7 @@ const NoMatch = (props) => {
       </div>
       <div className = 'width50percent flex flexAlignItemsCenter flexJustifyContentCenter sadFaceDiv'>
         <div className = 'noMatchImg'>
-          <img src = 'oops.png' alt = 'Opps!'/>
+          <img src = '/oops.png' alt = 'Oops!'/>
         </div>
       </div>
     </div>

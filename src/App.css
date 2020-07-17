@@ -1,6 +1,10 @@
 body{
   min-width: 0px;
 }
+.greenBackground{
+  background-color: #27383b;
+  background-image: linear-gradient(to right, #27383b , #62898b);
+}
 
 *{
   margin: 0;
@@ -250,11 +254,24 @@ hr{
   min-width: 200px;
   width: 400px;
 }
-.backgroundColorGradiantGreen{
-  background-color: #27383b;
-  background-image: linear-gradient(to right, #27383b , #62898b);
+.paralax1{
+  background-color: white;
+  background-image: url("/paralax1.png");
+  min-height: 400px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-
+.paralax2{
+  background-color: white;
+  background-image: url("/paralax2.png");
+  min-height: 400px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .backgroundColorEggWhite{
   background-color: #ebece7;
 }
@@ -285,6 +302,9 @@ hr{
 .colorBlack::placeholder{
   color: black!important;
 }
+.width20percent{
+  width: 20%;
+}
 
 .contentDiv{
   max-width: 1000px;
@@ -302,6 +322,9 @@ hr{
 
 .fontSize25px{
   font-size: 25px!important;
+}
+.fontSize40px{
+  font-size: 40px;
 }
 
 .smallhr{
@@ -403,6 +426,10 @@ hr{
   height: 40px;
   border-radius: 5px;
 }
+
+.minWidth{
+  min-width: 290px;
+}
 .width50percent{
   width: 50%;
 }
@@ -410,7 +437,7 @@ select:focus{
   outline: none !important;
 }
 .fontSize80px{
-  font-size: 80px;
+  font-size: 65px;
 }
 #navbar{
   position: fixed;
@@ -550,6 +577,9 @@ select:focus{
   animation: shake .2s ease-in-out .1s infinite alternate;
 }
 
+
+
+
 @keyframes shake{
   from{
     transform: rotate(15deg);
@@ -568,6 +598,12 @@ select:focus{
 
 
 @media (max-width: 800px) {
+  .paralax1{
+    background-attachment: scroll;
+  }
+  .paralax2{
+    background-attachment: scroll;
+  }
   .sadFaceDiv{
     display: none;
   }

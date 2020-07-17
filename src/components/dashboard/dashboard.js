@@ -31,7 +31,7 @@ const Dashboard = (props) => {
   }, [])
 
   return (
-    <div className = "height100vh backgroundColorGradiantGreen">
+    <div className = "height100vh greenBackground">
       <div className = "contentDiv width80percent margin0auto">
         <div className = "textAlignCenter">
           <Button onClick = {() => history.push('/user/addEvent')} className = "width80percent marginBottom50px loginPageButtonColor colorWhite" animated='fade'>

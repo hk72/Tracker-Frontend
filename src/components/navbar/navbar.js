@@ -40,7 +40,6 @@ const Navbar = (props) => {
   const bringOutMenuBar = () => {
 
     const hUL = document.getElementById('hUL')
-    const body = document.getElementById('landing')
 
     if(menu ===  false){
       hUL.style.left = '0%'
@@ -51,6 +50,15 @@ const Navbar = (props) => {
       setMenu(false)
     }
 
+  }
+
+  const hideMenuBar = () => {
+    const hUL = document.getElementById('hUL')
+
+    if (menu === true) {
+      hUL.style.left = '-100%'
+      setMenu(false)
+    }
   }
 
   const handleLogout = () => {
@@ -75,7 +83,10 @@ const Navbar = (props) => {
     <div className = "navbarSeperation">
       <nav id = 'navbar'>
         <div className = 'logoNav'>
-          <img src = '/logo192.png' alt = 'logo' />
+          <img onClick = {() => {
+            hideMenuBar()
+            history.push('/')
+          }} src = '/paralax1.png' alt = 'logo' />
         </div>
         <Icon className = 'menuBar' onClick = { () => bringOutMenuBar()} name='bars' />
         <ul id = 'hUL' className = 'hiddenUL ul'>

@@ -168,7 +168,7 @@ const Account = (props) => {
   }
 
   return(
-    <div className = "height100vh flex flexJustifyContentCenter backgroundColorGradiantGreen">
+    <div className = "height100vh flex flexJustifyContentCenter greenBackground">
       <div className = "contentDiv">
         <div className = "accountCard">
           <h2 className = "paddingLeft5percent colorWhite">Change Username</h2>

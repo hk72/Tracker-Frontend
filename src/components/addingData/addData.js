@@ -60,7 +60,7 @@ const AddData = (props) => {
   }
 
   return(
-    <div className = "height100vh flex flexAlignItemsCenter flexJustifyContentCenter backgroundColorGradiantGreen">
+    <div className = "height100vh flex flexAlignItemsCenter flexJustifyContentCenter greenBackground">
       <div className = "contentDiv">
         <div className = "accountCard">
           <h2 className = "paddingLeft5percent colorWhite">Add Data Point</h2>
