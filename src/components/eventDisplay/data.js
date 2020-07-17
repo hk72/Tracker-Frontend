@@ -7,7 +7,7 @@ const Data = (props) => {
 
   const handleDelete = () => {
 
-    fetch(`http://localhost:5000/api/event/deleteData/${props.id}/${props.info.key}`, {
+    fetch(`https://thetechiechart.herokuapp.com/api/event/deleteData/${props.id}/${props.info.key}`, {
       method: 'DELETE',
       credentials: 'include'
     })

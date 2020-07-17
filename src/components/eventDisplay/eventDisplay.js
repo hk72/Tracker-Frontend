@@ -41,7 +41,7 @@ const EventDisplay = (props) => {
   }
 
   const handleDelete = () => {
-    fetch(`http://localhost:5000/api/event/deleteEvent/${props.match.params.id}`, {
+    fetch(`https://thetechiechart.herokuapp.com/api/event/deleteEvent/${props.match.params.id}`, {
       method: 'DELETE',
       credentials: 'include'
     })
@@ -68,7 +68,7 @@ const EventDisplay = (props) => {
 
   useEffect(() => {
     console.log(history)
-    fetch(`http://localhost:5000/api/event/getEventsData/${props.match.params.id}`, {
+    fetch(`https://thetechiechart.herokuapp.com/api/event/getEventsData/${props.match.params.id}`, {
       method: 'GET',
       credentials: 'include'
     })

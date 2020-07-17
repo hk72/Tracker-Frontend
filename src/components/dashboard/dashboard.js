@@ -9,7 +9,7 @@ const Dashboard = (props) => {
   const [events, setEvents] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/event/getEvents', {
+    fetch('https://thetechiechart.herokuapp.com/api/event/getEvents', {
       method: 'GET',
       credentials: 'include'
     })

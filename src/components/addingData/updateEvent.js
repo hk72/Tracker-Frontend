@@ -8,7 +8,7 @@ const UpdateEvent = (props) => {
 
   useEffect(() => {
 
-    fetch('http://localhost:5000/api/user/quickAuth', {
+    fetch('https://thetechiechart.herokuapp.com/api/user/quickAuth', {
       method: 'GET',
       credentials: 'include'
     })
@@ -101,7 +101,7 @@ const UpdateEvent = (props) => {
     data.append('eventImage', eventImage.files[0])
     data.append('name', name)
 
-    fetch(`http://localhost:5000/api/event/updateEvent/${props.event._id}`,{
+    fetch(`https://thetechiechart.herokuapp.com/api/event/updateEvent/${props.event._id}`,{
       method: 'PATCH',
       credentials: 'include',
       body: data

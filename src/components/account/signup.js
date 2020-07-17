@@ -19,7 +19,7 @@ const Signup = (props) => {
     // setErrors(['Make Sure Passwords Match'])
   }
   else{
-    fetch('http://localhost:5000/api/user/signup',{
+    fetch('https://thetechiechart.herokuapp.com/api/user/signup',{
       method: 'POST',
       headers:{
         'Content-Type':'application/json'
@@ -43,7 +43,7 @@ const Signup = (props) => {
           ])
       }
       else if(res.message === "User Created"){
-        fetch('http://localhost:5000/api/user/login',{
+        fetch('https://thetechiechart.herokuapp.com/api/user/login',{
           method: 'POST',
           credentials: 'include',
           headers:{

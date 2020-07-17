@@ -62,7 +62,7 @@ const Navbar = (props) => {
   }
 
   const handleLogout = () => {
-    fetch('http://localhost:5000/api/user/logout', {
+    fetch('https://thetechiechart.herokuapp.com/api/user/logout', {
       method: 'POST',
       credentials: 'include'
     })

@@ -21,7 +21,7 @@ import './App.css';
 const App = (props) => {
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/user/profile', {
+    fetch('https://thetechiechart.herokuapp.com/api/user/profile', {
       method: 'GET',
       credentials: 'include'
     })

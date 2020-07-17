@@ -8,7 +8,7 @@ const AddData = (props) => {
   const [errors, setErrors] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/user/quickAuth', {
+    fetch('https://thetechiechart.herokuapp.com/api/user/quickAuth', {
       method: 'GET',
       credentials: 'include'
     })
@@ -29,7 +29,7 @@ const AddData = (props) => {
     let dataset = e.target['dataset'].value
     let label = e.target['label'].value
 
-    fetch(`http://localhost:5000/api/event/addData/${props.match.params.id}`,{
+    fetch(`https://thetechiechart.herokuapp.com/api/event/addData/${props.match.params.id}`,{
       method: 'POST',
       credentials: 'include',
       headers:{

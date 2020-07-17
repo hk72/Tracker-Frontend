@@ -8,7 +8,7 @@ const UpdateData = (props) => {
   const [errors, setErrors] = useState([])
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/event/getEvent/${props.match.params.id}/${props.match.params.dataID}`, {
+    fetch(`https://thetechiechart.herokuapp.com/api/event/getEvent/${props.match.params.id}/${props.match.params.dataID}`, {
       method: 'GET',
       credentials: 'include'
     })
@@ -42,7 +42,7 @@ const UpdateData = (props) => {
       dataset = props.data.dataset
     }
 
-    fetch(`http://localhost:5000/api/event/updateDataPoint/${props.match.params.id}/${props.match.params.dataID}`,{
+    fetch(`https://thetechiechart.herokuapp.com/api/event/updateDataPoint/${props.match.params.id}/${props.match.params.dataID}`,{
       method: 'PATCH',
       credentials: 'include',
       headers:{

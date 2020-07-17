@@ -8,7 +8,7 @@ const AddEvent = (props) => {
 
   useEffect(() => {
 
-    fetch('http://localhost:5000/api/user/quickAuth', {
+    fetch('https://thetechiechart.herokuapp.com/api/user/quickAuth', {
       method: 'GET',
       credentials: 'include'
     })
@@ -103,7 +103,7 @@ const AddEvent = (props) => {
     data.append('eventImage', eventImage.files[0])
     data.append('name', name)
 
-    fetch('http://localhost:5000/api/event/createEvent',{
+    fetch('https://thetechiechart.herokuapp.com/api/event/createEvent',{
       method: 'POST',
       credentials: 'include',
       body: data

@@ -14,7 +14,7 @@ const Login = (props) => {
 
     e.preventDefault()
 
-    fetch('http://localhost:5000/api/user/login',{
+    fetch('https://thetechiechart.herokuapp.com/api/user/login',{
       method: 'POST',
       credentials: 'include',
       headers:{
