@@ -159,7 +159,7 @@ const Account = (props) => {
       }
       else{
         setDeletionErrors([])
-        history.replace('/signup')
+        history.replace('/')
       }
     })
     .catch(err => {
